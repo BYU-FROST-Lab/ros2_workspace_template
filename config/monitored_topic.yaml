@@ -1,0 +1,43 @@
+# List the name of the topic with the corresponding topic type
+# Ex.   - name: /topic
+#       - type: topic/type
+
+# Below is a list of all of the topic types accepted up to this point.
+#   - nav_msgs/msg/Odometry
+#   - sensor_msgs/msg/Image
+#   - sensor_msgs/msg/Imu
+#   - sensor_msgs/msg/NavSatFix
+#   - sensor_msgs/msg/PointCloud2
+
+# Notes:
+#   Time sync status is referenced to the first topic received by the callback function.
+topics:
+  # Inertial Sense IMU/GPS
+  - name: /bluerov2/imu/data
+    type: sensor_msgs/msg/Imu
+
+  # Ouster LiDARs
+  # - name: /points
+  #   type: sensor_msgs/msg/PointCloud2
+  # - name: /imu
+  #   type: sensor_msgs/msg/Imu
+
+  # # Cameras
+  # - name: /camera/image_raw
+  #   type: sensor_msgs/msg/Image
+
+  # Emlid RTK GPS
+  - name: /bluerov2/imu/nav_sat_fix
+    type: sensor_msgs/msg/NavSatFix
+
+  # - name: /dvl/twist
+  #   type: geometry_msgs/msg/TwistWithCovarianceStamped
+  
+  - name: /bluerov2/deep/depth_data
+    type: nav_msgs/msg/Odometry
+
+  - name: /bluerov2/shallow/depth_data
+    type: nav_msgs/msg/Odometry
+
+  - name: /bluerov2/dvl/odometry
+    type: nav_msgs/msg/Odometry

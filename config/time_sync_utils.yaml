@@ -1,0 +1,7 @@
+# Example param file for topic_monitor node
+/**/topic_monitor:
+  ros__parameters:
+    topics_file: "~/config/monitored_topics.yaml"
+    relative_path: false
+    sync_threshold_warn_seconds: 0.2
+    sync_threshold_error_seconds: 1.0
