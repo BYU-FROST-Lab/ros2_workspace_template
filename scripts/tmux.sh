@@ -17,35 +17,28 @@ tmux rename-window -t ${SESSION_NAME}:0 bringup
 # Split into left/right (50/50)
 tmux split-window -h -t ${SESSION_NAME}:0
 
-# Split left pane into top/bottom
-tmux split-window -v -t ${SESSION_NAME}:0.0
+# # Split left pane into top/bottom
+# tmux split-window -v -t ${SESSION_NAME}:0.0
 
 # Top-left pane
 tmux send-keys -t ${SESSION_NAME}:0.0 \
   "docker exec -it ${CONTAINER} bash" C-m
-tmux send-keys -t ${SESSION_NAME}:0.2 \
-  "colcon build" C-m
-tmux send-keys -t ${SESSION_NAME}:0.2 \
-  "source install/setup.bash" C-m
 tmux send-keys -t ${SESSION_NAME}:0.0 \
   "clear" C-m
 tmux send-keys -t ${SESSION_NAME}:0.0 \
   "ros2 launch sensor_bringup bluerov_launch.py" 
 
-# # Bottom-left pane
-# tmux send-keys -t ${SESSION_NAME}:0.1 \
-#   "docker exec -it ${CONTAINER} bash" C-m
-#   tmux send-keys -t ${SESSION_NAME}:0.1 \
-#   "clear" C-m
-# tmux send-keys -t ${SESSION_NAME}:0.1 \
-#   "ros2 launch sensor_bringup lidar_launch.py" 
 
 # Right pane
-tmux send-keys -t ${SESSION_NAME}:0.2 \
+tmux send-keys -t ${SESSION_NAME}:0.1 \
+  "colcon build" C-m
+tmux send-keys -t ${SESSION_NAME}:0.1 \
+  "source install/setup.bash" C-m
+tmux send-keys -t ${SESSION_NAME}:0.1 \
   "docker exec -it ${CONTAINER} bash" C-m
-tmux send-keys -t ${SESSION_NAME}:0.2 \
+tmux send-keys -t ${SESSION_NAME}:0.1 \
   "clear" C-m
-tmux send-keys -t ${SESSION_NAME}:0.2 \
+tmux send-keys -t ${SESSION_NAME}:0.1 \
   "ros2 topic list" 
 
 ########################
@@ -54,17 +47,12 @@ tmux send-keys -t ${SESSION_NAME}:0.2 \
 tmux new-window -t ${SESSION_NAME} -n monitor
 
 
-
 ########################
 # Window 2: record
 ########################
 tmux new-window -t ${SESSION_NAME} -n record
 tmux send-keys -t ${SESSION_NAME}:record \
   "bash scripts/record.sh"
-
-tmux split-window -h -t ${SESSION_NAME}:record
-tmux send-keys -t ${SESSION_NAME}:record.1 \
-  "bash scripts/record.sh -p sbg"
 
 
 # Select the first window

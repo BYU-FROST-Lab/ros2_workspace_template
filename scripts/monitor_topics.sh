@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# TODO check if this works with root
 cd "$(dirname "$0")/.."
 source scripts/env_setup.sh
 

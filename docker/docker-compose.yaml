@@ -1,0 +1,23 @@
+services:
+  container:
+    image: frostlab/image:latest
+    build: Dockerfile
+    container_name: container
+    user: frostlab
+    network_mode: host
+    privileged: true
+    stdin_open: true
+    tty: true
+    environment:
+      - DISPLAY=$DISPLAY   # Optional: Required for GUI applications
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix       # Optional: Required for GUI applications
+      - /dev:/dev
+      - ../packages:/home/frostlab/ros2_ws/src
+      - ../bags:/home/frostlab/bags
+      - ../config:/home/frostlab/config
+      - entrypoint.sh:/entrypoint.sh
+      - ../scripts:/home/frostlab/scripts
+    entrypoint: ["/bin/bash", "/entrypoint.sh"]
+    restart: always  # Optional: Keeps the container running after exit unless you want it to be removed like with --rm
+

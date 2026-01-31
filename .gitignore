@@ -1,2 +1,11 @@
 bags/*
 !bags/.gitkeep
+
+
+# Ignore settings that can be modified by the user
+.vscode/
+
+
+# Ignore python cache
+**__pycache__/
+*.pyc

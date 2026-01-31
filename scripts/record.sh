@@ -1,10 +1,6 @@
 #!/bin/bash
-set -e
-
+  
 # Base ROS 2 bag recording script
-# - Sources a parameter file (.sh) for configuration
-
-
 cd "$(dirname "$0")/.."
 source scripts/env_setup.sh
 
